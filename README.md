@@ -1,35 +1,46 @@
-Role Name
-=========
+OPNsense: General
+=================
 
-A brief description of the role goes here.
+An Ansible role to configure basic system settings on opnSense firewalls.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role requires the `lxml` python package to be installed on the host system.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+|            Variable            |  Type  |             Description             |
+| :----------------------------: | :----: | :---------------------------------: |
+|   opnsense_general_hostname    | string | The hostname to set for the system. |
+|    opnsense_general_domain     | string |  The domain to set for the system.  |
+| opnsense_general_search_domain | string |   The search domain to configure.   |
+|   opnsense_general_timezone    | string | The timezone to set for the system. |
+|  opnsense_general_dns_server   | string | The IP address for the DNS server.  |
+|   opnsense_general_language    | string |         The language code.          |
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+N/A.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
 ```yaml
-- hosts: all
+- name: Configure all firewalls
+  hosts: opnsense
 
   roles:
-    - role: mirceanton.template
+    - role: mirceanton.opnsense_general
       vars:
-        foo: bar
+        opnsense_general_hostname: homebase
+        opnsense_general_domain: local
+        opnsense_general_search_domain: local
+        opnsense_general_timezone: Europe/Bucharest
+        opnsense_general_language: en_US
+        opnsense_general_dns_server: "1.1.1.1"
 ```
 
 License

@@ -1,0 +1,42 @@
+---
+- name: Set hostname
+  community.general.xml:
+    pretty_print: true
+    path: "{{ local_file }}"
+    xpath: "{{ xpath }}/hostname"
+    value: "{{ opnsense_general_hostname }}"
+
+- name: Set domain
+  community.general.xml:
+    pretty_print: true
+    path: "{{ local_file }}"
+    xpath: "{{ xpath }}/domain"
+    value: "{{ opnsense_general_domain }}"
+
+- name: Set dnssearchdomain
+  community.general.xml:
+    pretty_print: true
+    path: "{{ local_file }}"
+    xpath: "{{ xpath }}/dnssearchdomain"
+    value: "{{ opnsense_general_search_domain }}"
+
+- name: Set timezone
+  community.general.xml:
+    pretty_print: true
+    path: "{{ local_file }}"
+    xpath: "{{ xpath }}/timezone"
+    value: "{{ opnsense_general_timezone }}"
+
+- name: Set upstream DNS server
+  community.general.xml:
+    pretty_print: true
+    path: "{{ local_file }}"
+    xpath: "{{ xpath }}/dnsserver"
+    value: "{{ opnsense_general_dns_server }}"
+
+- name: Set language
+  community.general.xml:
+    pretty_print: true
+    path: "{{ local_file }}"
+    xpath: "{{ xpath }}/language"
+    value: "{{ opnsense_general_language }}"
